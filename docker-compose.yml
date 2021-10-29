@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    restart: always
+    depends_on:
+      - myql_bd
+
+  myql_bd:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_DATABASE=bd1_ejemplo
+      - MYSQL_USER=ger
+      - MYSQL_PASSWORD=1234
+      - MYSQL_ROOT_PASSWORD=1234
